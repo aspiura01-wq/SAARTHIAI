@@ -1,0 +1,16 @@
+{
+  "name": "SaarthiAI",
+  "description": "AI-first assistant for low-literacy, elderly and common citizens providing voice-first help for medical, government schemes, jobs, and nearby support.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "AI Assistant",
+    "Medical Transcription & Analysis",
+    "Government Scheme Discovery",
+    "Nearby Emergency & Services Help",
+    "Voice-First Interface"
+  ]
+}

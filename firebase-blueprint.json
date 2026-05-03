@@ -1,0 +1,115 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User specific settings and profile info",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "language": { "type": "string", "enum": ["ENGLISH", "HINDI", "KANNADA"] },
+        "biometricsEnabled": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "language"]
+    },
+    "Task": {
+      "title": "Task",
+      "description": "User to-do list items",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "text": { "type": "string" },
+        "completed": { "type": "boolean" },
+        "reminder": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "text", "completed"]
+    },
+    "Record": {
+      "title": "Scanned Document",
+      "description": "User's important stored documents",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "date": { "type": "number" },
+        "url": { "type": "string" }
+      },
+      "required": ["userId", "name", "url"]
+    },
+    "Appointment": {
+      "title": "Medical Appointment",
+      "description": "Doctor appointments booked by the user",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "doctorName": { "type": "string" },
+        "hospitalName": { "type": "string" },
+        "date": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["userId", "doctorName", "hospitalName", "date"]
+    },
+    "BudgetItem": {
+      "title": "Budget Item",
+      "description": "Income or expense entry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "category": { "type": "string" },
+        "amount": { "type": "number" },
+        "type": { "type": "string", "enum": ["income", "expense"] },
+        "date": { "type": "string" }
+      },
+      "required": ["userId", "category", "amount", "type"]
+    },
+    "MedicineReminder": {
+      "title": "Medicine Reminder",
+      "description": "Reminders for taking medicine",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "medicineName": { "type": "string" },
+        "time": { "type": "string" },
+        "enableMobile": { "type": "boolean" },
+        "enableWhatsapp": { "type": "boolean" },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "medicineName", "time", "enableMobile", "enableWhatsapp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/tasks/{taskId}": {
+      "schema": "Task",
+      "description": "To-do tasks"
+    },
+    "/records/{recordId}": {
+      "schema": "Record",
+      "description": "Scanned records"
+    },
+    "/appointments/{appointmentId}": {
+      "schema": "Appointment",
+      "description": "Medical appointments"
+    },
+    "/budget/{budgetId}": {
+      "schema": "BudgetItem",
+      "description": "Budget entries"
+    },
+    "/reminders/{reminderId}": {
+      "schema": "MedicineReminder",
+      "description": "Medicine reminders"
+    }
+  }
+}
